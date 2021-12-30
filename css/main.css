@@ -1,0 +1,297 @@
+:root {
+  --pinkish-color: rgb(217, 67, 180);
+  --pinkish-button-edge: rgb(131, 32, 85);
+  --pinkish-button-pressed: rgb(140, 55, 123);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(black, rgb(100, 0, 50), black);
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+@font-face {
+  font-family: Lazer84;
+  src: url(Lazer84.ttf);
+}
+
+@font-face {
+  font-family: Streamster;
+  src: url(Streamster.ttf);
+}
+
+canvas {
+  display: block;
+}
+
+a {
+  color: var(--pinkish-color);
+}
+
+a.button {
+  position: relative;
+  text-decoration: none;
+  color: rgb(15, 15, 15);
+  margin-right: 20px;
+  background-color: var(--pinkish-color);
+  display: block;
+  text-align: center;
+  padding: 8px 5px;
+  border-radius: 5px;
+  font-weight: 700;
+  text-shadow: 1px 1px rgba(255, 255, 255, 0.5);
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.3) 0px -3px 0px inset;
+}
+
+a.button:hover {
+  top: 2px;
+  text-shadow: none;
+  color: rgb(230, 235, 251);
+  background-color: var(--pinkish-button-pressed);
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(255, 255, 255, 0.1) 0px -3px 0px inset;
+}
+
+a.button:hover:before,
+a.button:hover:after {
+  background-color: transparent;
+}
+
+a.button:before {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  content: "";
+  height: 8px;
+  border-radius: 5px;
+  background-color: rgb(230, 235, 251, 0.3);
+}
+
+a.button:after {
+  position: absolute;
+  top: 4px;
+  left: 2px;
+  right: 2px;
+  content: "";
+  height: 6px;
+  background-color: var(--pinkish-color);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.flex {
+  flex: 1;
+}
+
+#content {
+  z-index: 1000;
+  position: absolute;
+  top: 30%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: scroll;
+  transform-origin: 50% 0%;
+  transform: perspective(2000px) rotateX(20deg);
+}
+
+#content > div {
+  font-family: "Nunito", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  padding-top: 60px;
+  padding-left: 65px;
+  padding-right: 40px;
+  padding-bottom: 100px;
+  max-width: 300px;
+  margin: 0 auto;
+  color: #eee;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--pinkish-color);
+  font-family: "Lazer84", cursive;
+  letter-spacing: 2px;
+  line-height: 32px;
+  text-shadow: 5px 5px 40px rgba(0, 0, 0, 0.6), 1px 1px rgba(255, 255, 255, 1);
+}
+
+.overlay {
+  width: 100%;
+  height: 30%;
+  z-index: 9999;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-image: repeating-linear-gradient(
+    rgba(0, 0, 0, 0.3) 0,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.3) 3px
+  );
+  pointer-events: none;
+}
+
+.masked-img {
+  position: relative;
+  width: 150px;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  -webkit-mask-box-image: url(grunge.png) 30 stretch;
+}
+
+.mask-bg {
+  background-color: #838383;
+}
+
+#logo {
+  position: absolute;
+  z-index: 10000;
+  top: 150px;
+  margin: auto;
+  pointer-events: none;
+}
+
+#logoTextA {
+  position: relative;
+  font-family: "Changa One", cursive;
+  font-size: 56px;
+  background-image: linear-gradient(
+    rgb(33, 32, 66) 15%,
+    rgb(67, 89, 164) 28%,
+    rgb(230, 235, 251) 45%,
+    rgb(37, 35, 75) 50%,
+    rgb(63, 80, 150) 55%,
+    rgb(110, 145, 240) 65%,
+    rgb(247, 250, 255) 80%
+  );
+  text-transform: uppercase;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgba(255, 255, 255, 0.4);
+}
+
+#logoTextA:before {
+  content: attr(data-text);
+  text-shadow: -1px -1px 1px rgb(33, 32, 66), -2px -2px 1px rgb(33, 32, 66),
+    -3px -3px 1px rgb(33, 32, 66), 1px 1px 1px #000, 0px -1px 2px #000,
+    -1px -2px 2px #000, 0 0 5px rgb(255 255 255);
+  opacity: 1;
+  position: absolute;
+  z-index: -1;
+}
+
+#logoTextB {
+  position: relative;
+  top: -46px;
+  left: 18px;
+  /* font-family: "Lazer84", cursive; */
+  font-family: "Streamster", cursive;
+  font-size: 50px;
+  transform: rotate(-10deg);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: -1px -1px 1px rgb(170, 47, 67), -2px -2px 1px rgb(51, 7, 63),
+    -3px -3px 1px rgb(170, 47, 67), 1px 1px 1px rgb(226, 159, 118),
+    0px -1px 2px rgb(226, 159, 118), -1px -2px 2px rgb(226, 159, 118),
+    0 0 5px rgb(255 255 255);
+}
+
+#logoTextB > span {
+  font-size: 44px;
+}
+
+.masked-overflow {
+  /* scroll bar width, for use in mask calculations */
+  --scrollbar-width: 8px;
+
+  /* mask fade distance, for use in mask calculations */
+  --mask-height: 70px;
+
+  /* If content exceeds height of container, overflow! */
+  overflow-y: auto;
+
+  /* Need to make sure container has bottom space,
+  otherwise content at the bottom is always faded out */
+  padding-bottom: var(--mask-height);
+
+  /* The CSS mask */
+
+  /* The content mask is a linear gradient from top to bottom */
+  --mask-image-content: linear-gradient(
+    to bottom,
+    transparent,
+    black var(--mask-height),
+    black calc(100% - var(--mask-height)),
+    transparent
+  );
+
+  /* Here we scale the content gradient to the width of the container 
+  minus the scrollbar width. The height is the full container height */
+  --mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
+
+  /* The scrollbar mask is a black pixel */
+  --mask-image-scrollbar: linear-gradient(black, black);
+
+  /* The width of our black pixel is the width of the scrollbar.
+  The height is the full container height */
+  --mask-size-scrollbar: var(--scrollbar-width) 100%;
+
+  /* Apply the mask image and mask size variables */
+  mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+  -moz-mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+  -webkit-mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+  mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+  -moz-mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+  -webkit-mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+
+  /* Position the content gradient in the top left, and the 
+  scroll gradient in the top right */
+  mask-position: 0 0, 100% 0;
+  -moz-mask-position: 0 0, 100% 0;
+  -webkit-mask-position: 0 0, 100% 0;
+
+  /* We don't repeat our mask images */
+  mask-repeat: no-repeat, no-repeat;
+  -moz-mask-repeat: no-repeat, no-repeat;
+  -webkit-mask-repeat: no-repeat, no-repeat;
+
+  scrollbar-width: thin; /* can also be normal, or none, to not render scrollbar */
+  scrollbar-color: currentColor transparent; /* foreground background */
+}
+
+/* Webkit / Blink */
+.masked-overflow::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+.masked-overflow::-webkit-scrollbar-thumb {
+  background-color: currentColor;
+  border-radius: 9999px; /* always round */
+}
+
+.masked-overflow::-webkit-scrollbar-track {
+  background-color: transparent;
+}

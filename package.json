@@ -1,0 +1,12 @@
+{
+  "name": "dingus-business",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:sterlingwes/dingus.business.git",
+  "author": "Wes Johnson <wes@swj.io>",
+  "workspaces": [
+    "sites/**"
+  ],
+  "license": "MIT"
+}

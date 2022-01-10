@@ -8,5 +8,9 @@
   "workspaces": [
     "sites/**"
   ],
+  "scripts": {
+    "start-docs": "pushd sites/tech-docs && yarn start",
+    "build-docs": "pushd sites/tech-docs && yarn build"
+  },
   "license": "MIT"
 }

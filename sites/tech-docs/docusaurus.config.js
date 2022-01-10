@@ -9,7 +9,7 @@ const config = {
   title: "Tech Docs",
   tagline: "Javascript ecosystem overview for mobile folks",
   url: "https://dingus.business/tech-docs",
-  baseUrl: "/",
+  baseUrl: "/tech-docs/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
@@ -35,6 +35,9 @@ const config = {
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
+        },
+        gtag: {
+          trackingID: "G-P8ZQYRQ8KQ",
         },
       }),
     ],
